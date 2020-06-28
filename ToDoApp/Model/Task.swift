@@ -9,13 +9,15 @@
 import Foundation
 
 struct Task {
-    var title: String
-    var descriprion: String?
+    let title: String
+    let descriprion: String?
     private(set) var date: Date?
+    let location: Location?
     
-    init(title: String, description: String? = nil) {
+    init(title: String, description: String? = nil, location: Location? = nil) {
         self.title = title
         self.descriprion = description
         self.date = Date()
+        self.location = location
     }
 }
