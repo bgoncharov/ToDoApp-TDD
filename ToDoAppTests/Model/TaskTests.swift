@@ -42,7 +42,7 @@ class TaskTests: XCTestCase {
     }
     
     func testWhenGivenLocationSetLocation() {
-        let location = Location(title: "Foo")
+        let location = Location(name: "Foo")
         
         let task = Task(title: "Bar",
                         description: "Baz",
