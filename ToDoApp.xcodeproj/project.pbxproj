@@ -22,6 +22,7 @@
 		A1CBB9C024A9984C007F951F /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBB9BF24A9984C007F951F /* TaskManagerTests.swift */; };
 		A1CBB9C324A998A9007F951F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBB9C224A998A9007F951F /* TaskManager.swift */; };
 		A1CBB9C624AA94BE007F951F /* TaskListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBB9C524AA94BE007F951F /* TaskListViewControllerTests.swift */; };
+		A1CBB9C824ABBC9A007F951F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBB9C724ABBC9A007F951F /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A1CBB9BF24A9984C007F951F /* TaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerTests.swift; sourceTree = "<group>"; };
 		A1CBB9C224A998A9007F951F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		A1CBB9C524AA94BE007F951F /* TaskListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewControllerTests.swift; sourceTree = "<group>"; };
+		A1CBB9C724ABBC9A007F951F /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CBB98524A92CE1007F951F /* TaskListViewController.swift */,
+				A1CBB9C724ABBC9A007F951F /* DataProvider.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				A1CBB9C324A998A9007F951F /* TaskManager.swift in Sources */,
 				A1CBB9B924A95D00007F951F /* Task.swift in Sources */,
 				A1CBB98624A92CE1007F951F /* TaskListViewController.swift in Sources */,
+				A1CBB9C824ABBC9A007F951F /* DataProvider.swift in Sources */,
 				A1CBB9BB24A960D8007F951F /* Location.swift in Sources */,
 				A1CBB98224A92CE1007F951F /* AppDelegate.swift in Sources */,
 				A1CBB98424A92CE1007F951F /* SceneDelegate.swift in Sources */,
