@@ -100,6 +100,21 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(cell.task, task)
         
     }
+    
+    func testCellForRowIsSectionOneCallsConfigure() {
+        
+        tableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        
+        let task = Task(title: "Foo")
+        sut.taskManager?.add(task: task)
+        sut.taskManager?.checkTask(at: 0)
+        tableView.reloadData()
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MockTaskCell
+        
+        XCTAssertEqual(cell.task, task)
+        
+    }
 
 }
 
@@ -117,7 +132,7 @@ extension DataProviderTests {
     class MockTaskCell: TaskCell {
         var task: Task?
         
-        override func configuration(withTask task: Task) {
+        override func configure(withTask task: Task) {
             self.task = task
         }
     }
