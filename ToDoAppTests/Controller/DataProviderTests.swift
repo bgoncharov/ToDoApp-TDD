@@ -114,7 +114,6 @@ class DataProviderTests: XCTestCase {
         
         XCTAssertEqual(cell.task, task)
     }
-
 }
 
 extension DataProviderTests {
