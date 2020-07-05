@@ -103,12 +103,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nj9-7s-pf5">
+                                <rect key="frame" x="186" y="168" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-c2-3Vs">
+                                <rect key="frame" x="87" y="234" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="0MD-r5-e5P"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="nj9-7s-pf5" id="jjy-OA-wU2"/>
                         <outlet property="descriptionLabel" destination="jOB-u1-rkd" id="gU2-hU-0as"/>
+                        <outlet property="mapView" destination="XZf-c2-3Vs" id="eVb-e8-rEN"/>
                         <outlet property="titleLabel" destination="fbt-5j-XNJ" id="Y6N-Ih-ef4"/>
                     </connections>
                 </viewController>

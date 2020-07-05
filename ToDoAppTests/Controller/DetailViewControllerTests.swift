@@ -29,9 +29,18 @@ class DetailViewControllerTests: XCTestCase {
     }
     
     func testHasDescriptionLable() {
-        
         XCTAssertNotNil(sut.descriptionLabel)
         XCTAssertTrue(sut.descriptionLabel.isDescendant(of: sut.view))
+    }
+    
+    func testHasDateLable() {
+        XCTAssertNotNil(sut.dateLabel)
+        XCTAssertTrue(sut.dateLabel.isDescendant(of: sut.view))
+    }
+    
+    func testHasMapView() {
+        XCTAssertNotNil(sut.mapView)
+        XCTAssertTrue(sut.mapView.isDescendant(of: sut.view))
     }
     
 }
