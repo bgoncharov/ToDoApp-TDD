@@ -13,6 +13,7 @@ import CoreLocation
 class NewTaskViewControllerTests: XCTestCase {
     
     var sut: NewTaskViewController!
+    var placemark: MockCLPlacemark!
 
     override func setUpWithError() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -62,16 +63,42 @@ class NewTaskViewControllerTests: XCTestCase {
         sut.dateTextField.text = "06.07.20"
         sut.adressTextField.text = "Fremont"
         sut.descriptionTextField.text = "Baz"
-        sut.taskManager = TaskManager()
         
+        sut.taskManager = TaskManager()
+        let mockGeocoder = MockCLGeocoder()
+        sut.geocoder = mockGeocoder
         sut.save()
         
-        let task = sut.taskManager.task(at: 0)
         let coordinate = CLLocationCoordinate2D(latitude: 37.548271, longitude: -121.988571)
         let location = Location(name: "Bar", coordinate: coordinate)
-        let generatedTask = Task(title: "foo", description: "Baz", date: date, location: location)
+        let generatedTask = Task(title: "Foo", description: "Baz", date: date, location: location)
+        
+        placemark = MockCLPlacemark()
+        placemark.mockCoordinate = coordinate
+        mockGeocoder.completionHandler?([placemark], nil)
+         
+        let task = sut.taskManager.task(at: 0)
         
         XCTAssertEqual(task, generatedTask)
     }
+}
 
+extension NewTaskViewControllerTests {
+    class MockCLGeocoder: CLGeocoder {
+        
+        var completionHandler: CLGeocodeCompletionHandler?
+        
+        override func geocodeAddressString(_ addressString: String, completionHandler: @escaping CLGeocodeCompletionHandler) {
+            self.completionHandler = completionHandler
+        }
+    }
+    
+    class MockCLPlacemark: CLPlacemark {
+        
+        var mockCoordinate: CLLocationCoordinate2D!
+        
+        override var location: CLLocation? {
+            return CLLocation(latitude: mockCoordinate.latitude, longitude: mockCoordinate.longitude)
+        }
+    }
 }
