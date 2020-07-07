@@ -69,7 +69,7 @@ class NewTaskViewControllerTests: XCTestCase {
         sut.geocoder = mockGeocoder
         sut.save()
         
-        let coordinate = CLLocationCoordinate2D(latitude: 37.548271, longitude: -121.988571)
+        let coordinate = CLLocationCoordinate2D(latitude: 37.552329, longitude: -121.983005)
         let location = Location(name: "Bar", coordinate: coordinate)
         let generatedTask = Task(title: "Foo", description: "Baz", date: date, location: location)
         
@@ -91,6 +91,29 @@ class NewTaskViewControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(actions.contains("save"))
+    }
+    
+    func testGeocoderFetchesCorrectCoordinate() {
+        let geocoderAnswer = expectation(description: "Geocoder answer")
+        let addressString = "Fremont"
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            
+            let placemark = placemarks?.first
+            let location = placemark?.location
+            
+            guard
+                let latitude = location?.coordinate.latitude,
+                let longitude = location?.coordinate.longitude else {
+                    XCTFail()
+                    return
+            }
+            
+            XCTAssertEqual(latitude, 37.552329)
+            XCTAssertEqual(longitude, -121.983005)
+            geocoderAnswer.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
 }
 
