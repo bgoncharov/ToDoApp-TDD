@@ -18,7 +18,7 @@ class APIClient {
     lazy var urlSession: URLSessionProtocol = URLSession.shared
     
     func login(withName: String, password: String, completionHandler: @escaping (String?, Error?) -> Void) {
-        guard let url = URL(string: "https://todoapp.com") else {
+        guard let url = URL(string: "https://todoapp.com/login") else {
             fatalError()
         }
         
