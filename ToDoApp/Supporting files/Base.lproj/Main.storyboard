@@ -71,7 +71,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ujc-nu-6Ma"/>
+                    <navigationItem key="navigationItem" id="ujc-nu-6Ma">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Pq-NT-LMZ">
+                            <connections>
+                                <action selector="addNewTask:" destination="BYZ-38-t0r" id="33z-3z-BY0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataProvider" destination="Gem-ml-0Nr" id="n0R-Yy-nLI"/>
                         <outlet property="tableView" destination="ht5-h7-JeE" id="H2I-i6-Fw3"/>

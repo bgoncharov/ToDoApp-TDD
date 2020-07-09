@@ -47,4 +47,9 @@ class TaskListViewControllerTests: XCTestCase {
             sut.tableView.dataSource as? DataProvider
         )
     }
+    
+    func testTaskKistVCHasAddBarButtonWithSelfAsTarget() {
+        let target = sut.navigationItem.rightBarButtonItem?.target
+        XCTAssertEqual(target as? TaskListViewController, sut)
+    }
 }
