@@ -112,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A170830224B6977A007607A0 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A1CBB99824A92CE2007F951F /* ToDoAppTests.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		A17E9BEF24B516C70070B107 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +168,7 @@
 				A1CBB9C424AA944D007F951F /* Controller */,
 				A1CBB9BE24A99834007F951F /* Mnager */,
 				A1CBB9B524A95C4B007F951F /* Model */,
-				A1CBB99824A92CE2007F951F /* ToDoAppTests.swift */,
+				A170830224B6977A007607A0 /* Supporting files */,
 				A1CBB99A24A92CE2007F951F /* Info.plist */,
 			);
 			path = ToDoAppTests;
