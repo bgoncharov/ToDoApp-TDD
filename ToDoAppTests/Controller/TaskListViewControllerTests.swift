@@ -53,14 +53,14 @@ class TaskListViewControllerTests: XCTestCase {
         XCTAssertEqual(target as? TaskListViewController, sut)
     }
     
-    func testAddNewTaskPresentsNewTaskViewController() {
+    func presentingNewTaskViewController() -> NewTaskViewController {
         XCTAssertNil(sut.presentedViewController)
         
         guard
             let newTaskButton = sut.navigationItem.rightBarButtonItem,
             let action = newTaskButton.action else {
                 XCTFail()
-                return
+                return NewTaskViewController()
         }
         
         UIApplication.shared.keyWindow?.rootViewController = sut
@@ -69,26 +69,16 @@ class TaskListViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.presentedViewController is NewTaskViewController)
         
         let newTaskViewController = sut.presentedViewController as! NewTaskViewController
+        return newTaskViewController
+    }
+    
+    func testAddNewTaskPresentsNewTaskViewController() {
+        let newTaskViewController = presentingNewTaskViewController()
         XCTAssertNotNil(newTaskViewController.titleTextField)
     }
     
     func testSharesSameTaskManagerWithTaskVC() {
-        XCTAssertNil(sut.presentedViewController)
-        
-        guard
-            let newTaskButton = sut.navigationItem.rightBarButtonItem,
-            let action = newTaskButton.action else {
-                XCTFail()
-                return
-        }
-        
-        UIApplication.shared.keyWindow?.rootViewController = sut
-        sut.performSelector(onMainThread: action, with: newTaskButton, waitUntilDone: true)
-        XCTAssertNotNil(sut.presentedViewController)
-        XCTAssertTrue(sut.presentedViewController is NewTaskViewController)
-        
-        let newTaskViewController = sut.presentedViewController as! NewTaskViewController
-        XCTAssertNotNil(sut.dataProvider.taskManager)
+        let newTaskViewController = presentingNewTaskViewController()
         XCTAssertTrue(newTaskViewController.taskManager === sut.dataProvider.taskManager)
     }
 }
