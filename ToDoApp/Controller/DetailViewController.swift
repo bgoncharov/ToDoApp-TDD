@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(true)
         
         self.titleLabel.text = task.title
-        self.descriptionLabel.text = task.descriprion
+        self.descriptionLabel.text = task.description
         self.locationLabel.text = task.location?.name
         self.dateLabel.text = dateFormatter.string(from: task.date)
         

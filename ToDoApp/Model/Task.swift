@@ -10,7 +10,7 @@ import Foundation
 
 struct Task {
     let title: String
-    let descriprion: String?
+    let description: String?
     let date: Date
     let location: Location?
     
@@ -19,9 +19,23 @@ struct Task {
          date: Date? = nil,
          location: Location? = nil) {
         self.title = title
-        self.descriprion = description
+        self.description = description
         self.date = date ?? Date()
         self.location = location
+    }
+}
+
+extension Task {
+    typealias PlistDictionaty = [String : Any]
+    init?(dict: PlistDictionaty) {
+        self.title = dict["title"] as! String
+        self.description = dict["description"] as? String
+        self.date = dict["date"] as? Date ?? Date()
+        if let locationDictionary = dict["location"] as? [String : Any] {
+            self.location = Location(dict: locationDictionary)
+        } else {
+            self.location = nil
+        }
     }
 }
 
@@ -29,7 +43,7 @@ extension Task: Equatable {
     static func == (lhs: Task, rhs: Task) -> Bool {
         if
             lhs.title == rhs.title,
-            lhs.descriprion == rhs.descriprion,
+            lhs.description == rhs.description,
             lhs.location == rhs.location {
             return true
         }

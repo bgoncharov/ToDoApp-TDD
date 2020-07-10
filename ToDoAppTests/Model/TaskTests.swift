@@ -32,7 +32,7 @@ class TaskTests: XCTestCase {
     func testWhenGivenDescriptionSetDescription() {
         let task = Task(title: "Foo", description:  "Bar")
         
-        XCTAssertEqual(task.descriprion, "Bar")
+        XCTAssertEqual(task.description, "Bar")
     }
     
     func testTaskInitsWithDate() {
@@ -49,5 +49,21 @@ class TaskTests: XCTestCase {
                         location: location)
         
         XCTAssertEqual(location, task.location)
+    }
+    
+    func testCanBeCreatedFromPlistDictionary() {
+        let location = Location(name: "Baz")
+        let date = Date(timeIntervalSince1970: 10)
+        let task = Task(title: "Foo", description: "Bar", date: date, location: location)
+        
+        let locationDictionary: [String: Any] = ["name" : "Baz"]
+        let dictionary: [String : Any] = ["title" : "Foo",
+                                          "description" : "Bar",
+                                          "date" : date,
+                                          "location" : locationDictionary]
+        
+        let createdTask = Task(dict: dictionary)
+        
+        XCTAssertEqual(task, createdTask)
     }
 }
