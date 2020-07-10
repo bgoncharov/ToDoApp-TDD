@@ -90,6 +90,24 @@ class TaskListViewControllerTests: XCTestCase {
         
         XCTAssertTrue((sut.tableView as! MockTableView).isReloaded)
     }
+    
+    func testTappingCellSendsNotification() {
+        let task = Task(title: "Foo")
+        sut.dataProvider.taskManager?.add(task: task)
+        
+        expectation(forNotification: NSNotification.Name(rawValue: "DidSelectRow notificaion"), object: nil) { notification -> Bool in
+            
+            guard let taskFromNotofication = notification.userInfo?["task"] as? Task else {
+                return false
+            }
+            
+            return task == taskFromNotofication
+        }
+        
+        let tableView = sut.tableView
+        tableView?.delegate?.tableView?(tableView!, didSelectRowAt: IndexPath(row: 0, section: 0))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
 }
 
 extension TaskListViewControllerTests {
